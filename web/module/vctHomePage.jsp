@@ -54,7 +54,7 @@
 	</div>
 	
 <script>
-
+	var $ = jQuery.noConflict();
 	$(document).ready(function(){
 		$("#vct").hover(function(){
 			$("#vct").addClass("menuLinkSelected");
