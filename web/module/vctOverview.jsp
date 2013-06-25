@@ -22,6 +22,7 @@
 <br/><br/>
 
 <script type="text/javascript">
+	var $ = jQuery.noConflict();
 	function loadGraph(id,width,height,boldIndex,graphCategory){
 		var bts="<ul id='menu'><li class='first "+((boldIndex==1)?"active":"")+"'><a href='#' onclick=loadGraph('registrationEvolutionPerDay','550','250',1,1)>This Week</a></li><li class='"+((boldIndex==2)?"active":"")+"'><a href='#' onclick=loadGraph('registrationEvolutionPerDay','750','250',2,2)>This Month</a></li><li class='"+((boldIndex==3)?"active":"")+"'><a href='#' onclick=loadGraph('barChartView','650','250',3,3)>This Year</a></li><li class='"+((boldIndex==4)?"active":"")+"'><a href='#' onclick=loadGraph('barChartView','650','250',4,4)>Years</a></li></ul><br/>";
 		//chart.htm?chart=barChartView&type=todayAndYesterday&width=300&height=300

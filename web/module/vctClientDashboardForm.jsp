@@ -190,7 +190,7 @@
 </c:forEach>
 
 <script>
-
+		var $ = jQuery.noConflict();
 		function showResult(obj){
 			var id="#viewHide_"+obj.name;
 			var hivTestResultDivId="#hivResult_"+obj.name;

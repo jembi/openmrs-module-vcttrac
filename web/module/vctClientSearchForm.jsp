@@ -45,6 +45,7 @@
 </div>
 
 <script type="text/javascript">
+	var $ = jQuery.noConflict();
 	$(document).ready(function(){
 		$("#n_1").focus();
 	});

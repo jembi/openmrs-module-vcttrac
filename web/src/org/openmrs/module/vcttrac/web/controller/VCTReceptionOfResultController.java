@@ -29,6 +29,7 @@ import org.openmrs.module.vcttrac.VCTClient;
 import org.openmrs.module.vcttrac.service.VCTModuleService;
 import org.openmrs.module.vcttrac.util.VCTConfigurationUtil;
 import org.openmrs.module.vcttrac.util.VCTTracConstant;
+import org.openmrs.util.OpenmrsUtil;
 import org.openmrs.web.WebConstants;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.ParameterizableViewController;
@@ -141,11 +142,13 @@ public class VCTReceptionOfResultController extends ParameterizableViewControlle
 			obs5.setDateCreated(new Date());
 			obs5.setLocation(o.getLocation());
 			obs5.setObsDatetime(obsDatetime);
+			obs5.setValueDate(obsDatetime);
 			obs5.setConcept(Context.getConceptService().getConcept(VCTConfigurationUtil.getNumberOfCondomsTakenConceptId()));
 			obs5.setValueNumeric(Double.valueOf(request.getParameter("numberOfCondom")));
+//			obs5.setUuid(OpenmrsUtil.generateUid());
 			
 			obs5.setObsGroup(o);
-			Context.getObsService().saveObs(obs5, null);
+			Context.getObsService().saveObs(obs5, "Number of comdoms");
 		}
 	}
 
@@ -161,13 +164,12 @@ public class VCTReceptionOfResultController extends ParameterizableViewControlle
 		try {
 			
 			VCTClient client = null;
-			Date resultReceivedOn;
 			Obs hivTestConstruct;
 			Obs dateResultOfHivTestReceived = new Obs();
 			
 			vms = Context.getService(VCTModuleService.class);
 			client = vms.getClientByCodeTest(request.getParameter("clientCode"));
-			resultReceivedOn = df.parse(request.getParameter("dateHivTestResultReceived"));
+			Date resultReceivedOn = df.parse(request.getParameter("dateHivTestResultReceived"));
 			hivTestConstruct = client.getResultObs();
 			
 			//save the number of condoms taken by the client
@@ -183,6 +185,8 @@ public class VCTReceptionOfResultController extends ParameterizableViewControlle
 			    VCTConfigurationUtil.getDateResultOfHivTestReceivedConceptId()));
 			dateResultOfHivTestReceived.setValueDatetime(resultReceivedOn);
 			dateResultOfHivTestReceived.setObsDatetime(resultReceivedOn);
+			dateResultOfHivTestReceived.setValueDate(resultReceivedOn);
+//			dateResultOfHivTestReceived.setUuid(OpenmrsUtil.generateUid());
 			
 			hivTestConstruct.addGroupMember(dateResultOfHivTestReceived);
 			
@@ -301,12 +305,14 @@ public class VCTReceptionOfResultController extends ParameterizableViewControlle
 				obs.setDateCreated(new Date());
 				obs.setCreator(Context.getAuthenticatedUser());
 				obs.setObsDatetime(resultReceivedOn);
+				obs.setValueDate(resultReceivedOn);
 				obs.setPerson(client.getClient());
 				obs.setLocation(Context.getLocationService().getDefaultLocation());
+//				obs.setUuid(OpenmrsUtil.generateUid());
 				
 				log
 				        .info(">>>>>VCT>>Result>>Reception>>From>>>> Trying to save the location where the client is being transferred to...");
-				Context.getObsService().saveObs(obs, null);
+				Context.getObsService().saveObs(obs, "Location of transfer");
 				log.info(">>>>>VCT>>Result>>Reception>>From>>>> Saved successfully.");
 			}
 			
