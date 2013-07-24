@@ -45,9 +45,12 @@ public class VCTModuleTag {
 			
 			Person person = Context.getPersonService().getPerson(personId);
 			String names = "";
+			String givenName = "";
 			if (null != person) {
-				names = (person.getGivenName().trim() + " " + person.getMiddleName()).trim() + " "
-				        + person.getFamilyName().trim();
+				givenName = person.getGivenName().trim() + " ";
+				names = ((person.getGivenName() != null ? person.getGivenName().trim() : "")  + " " 
+						+ (person.getMiddleName() != null ? person.getMiddleName().trim() : "" ) + " "
+				        + (person.getFamilyName() != null ? person.getFamilyName().trim() : ""));
 			}
 			return names;
 		}

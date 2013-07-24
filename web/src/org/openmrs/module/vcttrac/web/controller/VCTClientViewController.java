@@ -228,9 +228,9 @@ public class VCTClientViewController extends ParameterizableViewController {
 		String pageNumber = request.getParameter("page");
 		List<VCTClient> clients = new ArrayList<VCTClient>();
 		
-		List<Integer> res;
+		List<Integer> res = null;
 		
-		List<Integer> numberOfPages;
+		List<Integer> numberOfPages = null;
 		
 		try {
 			

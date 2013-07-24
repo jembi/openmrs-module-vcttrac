@@ -105,12 +105,13 @@ public class VCTProgramEnrollmentController extends ParameterizableViewControlle
 		int pageSize;//, type;
 		List<VCTClient> clients = new ArrayList<VCTClient>();
 		
-		List<Integer> res;
+		List<Integer> res = null;
 		
-		List<Integer> numberOfPages;
+		List<Integer> numberOfPages = null;
 		
 		try {
 			if (VCTConfigurationUtil.isConfigured()) {
+				log.info("******************************************* Check if the VCT is Configured!!");
 				//				type = Integer.valueOf(request.getParameter("type"));
 				//				parameters.append("&type=" + request.getParameter("type"));
 				
@@ -120,6 +121,7 @@ public class VCTProgramEnrollmentController extends ParameterizableViewControlle
 					
 					//					if (request.getParameter("type") != null && request.getParameter("type").compareToIgnoreCase("0") == 0) {
 					res = service.getVCTClientsWaitingToBeEnrolledInHIVProgram();
+					log.info("**************************************************** getVCTClientsWaitingToBeEnrolledInHIVProgram: " + res.size());
 					/*	type = 0;
 					} else if (request.getParameter("type") != null
 					        && request.getParameter("type").compareToIgnoreCase("1") == 0) {
@@ -296,6 +298,7 @@ public class VCTProgramEnrollmentController extends ParameterizableViewControlle
 				
 				mav.addObject("numberOfPages", numberOfPages);
 				mav.addObject("clients", clients);
+				log.info("*********************************: the lists of all clients waiting for registration: " + clients.size());
 				//				mav.addObject("parameters", parameters.toString());
 				mav.addObject("pageSize", pageSize);
 				mav.addObject("pageInfos", appContext.getMessage("vcttrac.pagingInfo.showingResults", pagerInfos, Context
@@ -472,10 +475,14 @@ public class VCTProgramEnrollmentController extends ParameterizableViewControlle
 				pi.setDateCreated(new Date());
 				pi.setCreator(Context.getAuthenticatedUser());
 				pi.setLocation(client.getLocation());
-				pi.setIdentifier(client.getNid());
-				pi.setIdentifierType(Context.getPatientService().getPatientIdentifierType(
-				    VCTConfigurationUtil.getNIDIdentifierTypeId()));
-				
+				if(client.getNid() != null) {
+					pi.setIdentifier(client.getNid());
+					pi.setIdentifierType(Context.getPatientService().getPatientIdentifierType(
+							VCTConfigurationUtil.getNIDIdentifierTypeId()));
+				} else {
+					pi.setIdentifier(client.getCodeClient());
+					pi.setIdentifierType(Context.getPatientService().getPatientIdentifierType(8));
+				}
 				log.info(">>>>>VCT>>HIV>>Program>>Patient>>Enrollment>>>> Trying to save PatientIdentifier, type="
 				        + Context.getPatientService()
 				                .getPatientIdentifierType(VCTConfigurationUtil.getNIDIdentifierTypeId()).getName()
