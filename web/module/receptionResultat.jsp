@@ -84,7 +84,7 @@ var $ = jQuery.noConflict();
 				}
 			});
 			$("#load").click(function(){
-				$('#result').html("Loading...");
+				$('#result').html("<span style='font-color:red;'><b><i>Loading...</i></b></span>");
 				var url='autocompletion/getClientInfo.htm?q='+$("#clientCode").val();
 				$.get(url, function(data) {
 					  $('#result').html(data);

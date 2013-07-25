@@ -90,6 +90,13 @@ public class VCTConfigurationUtil {
 	}
 	
 	/**
+	 * @return The VCT identifier type id, in case it has not been configured, it will return null.
+	 */
+	public static int getVCTIdentifierTypeId() throws Exception {
+		return MohTracConfigurationUtil.getVCTIdentifierTypeId();
+	}
+	
+	/**
 	 * @return The TracNet identifier type id, in case it has not been configured, it will return
 	 *         null.
 	 */

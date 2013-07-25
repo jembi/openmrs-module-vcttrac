@@ -198,8 +198,8 @@ public class VCTReceptionOfResultController extends ParameterizableViewControlle
 			//			client.setArchived(true); 
 			if (request.getParameter("clientDecision") != null) {
 				client.setClientDecision(Integer.valueOf(request.getParameter("clientDecision")));
+				vms.saveVCTClient(client);
 			}
-			vms.saveVCTClient(client);
 			
 			log.info(">>>>>VCT>>Result>>Reception>>Form>>>> Client Archived successfully.");
 			
@@ -316,7 +316,9 @@ public class VCTReceptionOfResultController extends ParameterizableViewControlle
 				log.info(">>>>>VCT>>Result>>Reception>>From>>>> Saved successfully.");
 			}
 			
-			if (request.getParameter("clientDecision") == null || request.getParameter("clientDecision").compareTo("1") != 0) {
+			if(request.getParameter("clientDecision")!=null)
+			//if (request.getParameter("clientDecision") == null || request.getParameter("clientDecision").compareTo("1") != 0) {
+			if (request.getParameter("clientDecision").compareTo("1") != 0) {
 				client.setArchived(true);
 				vms.saveVCTClient(client);
 			}

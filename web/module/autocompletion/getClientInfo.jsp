@@ -8,6 +8,7 @@
 <%@page import="org.openmrs.PatientIdentifierType"%>
 <%@page import="org.openmrs.ConceptAnswer"%>
 <%@page import="org.openmrs.api.context.Context"%>
+<%@page import="org.openmrs.GlobalProperty"%>
 <%@page import="org.openmrs.Obs"%>
 <%@page import="org.openmrs.module.vcttrac.VCTClient"%>
 <%@page import="java.util.Iterator"%>
@@ -52,6 +53,9 @@
 	
 	int index=0;
 	PatientIdentifier identifier=null;
+	GlobalProperty preferredIdGP = Context.getAdministrationService()
+			.getGlobalPropertyObject("vcttrac.vpc.vctPreferredIdentifier");
+	Integer preferredIdentifier = Integer.parseInt(preferredIdGP.getPropertyValue());
 	
 	out.println("<input type='hidden' name='hivStatus' value='"+((hivTestResultId==VCTTracConstant.POSITIVE_CID)?1:0)+"'/>");
 	
@@ -83,9 +87,11 @@
 		
 		out.println("<tr><th>"+VCTTracUtil.getMessage("PatientIdentifier.identifierType",null)+"</th><th>"+VCTTracUtil.getMessage("PatientIdentifier.identifier",null)+"</th><td></td><th>"+VCTTracUtil.getMessage("PatientIdentifier.location.identifier",null)+"</th><td></td></tr>");
 		int numberOfIdentifierTypeRequired=0, numberOfIdentifierType=0;
+		
 		for(PatientIdentifierType pi:Context.getPatientService().getPatientIdentifierTypes()){
 			numberOfIdentifierType++;
-			if(pi.getRequired() || (Context.getPatientService().getPatientIdentifierTypes().size()==numberOfIdentifierType && numberOfIdentifierTypeRequired==0)){
+			//if(pi.getRequired() || (Context.getPatientService().getPatientIdentifierTypes().size()==numberOfIdentifierType && numberOfIdentifierTypeRequired==0)){
+			if(pi.getId().intValue() == preferredIdentifier.intValue()){// (!This is to pick the Preferred Identifier which is normally TracNet ID)
 				numberOfIdentifierTypeRequired++;
 				out.println("<tr>");
 				out.println("<td><input type='hidden' name='identifierType_"+index+"' id='identifierTypeId_"+index+"' value='"+pi.getPatientIdentifierTypeId()+"'/>"+ pi.getName()+"</td>");
