@@ -84,6 +84,7 @@ var $ = jQuery.noConflict();
 				}
 			});
 			$("#load").click(function(){
+				$('#result').html("Loading...");
 				var url='autocompletion/getClientInfo.htm?q='+$("#clientCode").val();
 				$.get(url, function(data) {
 					  $('#result').html(data);
