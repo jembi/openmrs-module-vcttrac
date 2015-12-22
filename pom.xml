@@ -47,6 +47,8 @@ lib-common/tests-openmrs-api-1.6.2.12911-dev.jar
 				<version>library.version</version>
 				<scope>compile</scope>
 			</dependency>
+			
+			@TODO point or use maven dependecies and remove added jars after releasing modules like org.openmrs.module.mohtracportal
 			-->
 			
 			<dependency>
@@ -74,7 +76,7 @@ lib-common/tests-openmrs-api-1.6.2.12911-dev.jar
 	</dependencyManagement>
 
 	<properties>
-		<openMRSVersion>1.7.0</openMRSVersion>
+		<openMRSVersion>1.9.0</openMRSVersion>
 	</properties>
 
 	<build>
@@ -115,5 +117,18 @@ lib-common/tests-openmrs-api-1.6.2.12911-dev.jar
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+	
+	<distributionManagement>
+		<repository>
+			<id>openmrs-repo-modules</id>
+			<name>Modules</name>
+			<url>http://mavenrepo.openmrs.org/nexus/content/repositories/modules/</url>
+		</repository>
+		<snapshotRepository>
+			<id>openmrs-repo-snapshots</id>
+			<name>OpenMRS Snapshots</name>
+			<url>http://mavenrepo.openmrs.org/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>

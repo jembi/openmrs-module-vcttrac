@@ -6,7 +6,6 @@
 		<artifactId>vcttrac</artifactId>
 		<version>0.2.5.2-SNAPSHOT</version>
 	</parent>
-	<groupId>org.openmrs.module</groupId>
 	<artifactId>vcttrac-api</artifactId>
 	<packaging>jar</packaging>
 	<name>Rwanda VCT API</name>
@@ -21,6 +20,12 @@
 		</dependency>
 		-->
 		
+		<!-- OpenMRS Modules -->
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>mohtracportal-api</artifactId>
+			<version>0.2.3.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.openmrs.api</groupId>
 			<artifactId>openmrs-api</artifactId>
@@ -29,11 +34,6 @@
 		<dependency>
 			<groupId>org.openmrs.web</groupId>
 			<artifactId>openmrs-web</artifactId>
-			<type>jar</type>
-		</dependency>
-		<dependency>
-			<groupId>org.openmrs.test</groupId>
-			<artifactId>openmrs-test</artifactId>
 			<type>jar</type>
 		</dependency>
 	</dependencies>
