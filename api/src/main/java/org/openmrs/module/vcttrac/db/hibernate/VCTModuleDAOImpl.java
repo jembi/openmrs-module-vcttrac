@@ -21,14 +21,14 @@ import java.util.UUID;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.SessionFactory;
-import org.hibernate.classic.Session;
 import org.hibernate.criterion.Restrictions;
 import org.openmrs.Obs;
 import org.openmrs.PatientIdentifier;
 import org.openmrs.Person;
 import org.openmrs.PersonAttribute;
 import org.openmrs.api.context.Context;
+import org.openmrs.api.db.hibernate.DbSession;
+import org.openmrs.api.db.hibernate.DbSessionFactory;
 import org.openmrs.module.mohtracportal.util.MohTracUtil;
 import org.openmrs.module.vcttrac.VCTClient;
 import org.openmrs.module.vcttrac.db.VCTModuleDAO;
@@ -43,19 +43,19 @@ public class VCTModuleDAOImpl implements VCTModuleDAO {
 	
 	private Log log = LogFactory.getLog(this.getClass());
 	
-	private SessionFactory sessionFactory;
+	private DbSessionFactory sessionFactory;
 	
 	/**
 	 * @return the sessionFactory
 	 */
-	public SessionFactory getSessionFactory() {
+	public DbSessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
 	
 	/**
 	 * @param sessionFactory the sessionFactory to set
 	 */
-	public void setSessionFactory(SessionFactory sessionFactory) {
+	public void setSessionFactory(DbSessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 	
@@ -64,22 +64,22 @@ public class VCTModuleDAOImpl implements VCTModuleDAO {
 	 * 
 	 * @return
 	 */
-	private Session getSession() {
+	private DbSession getSession() {
 		//		if (getSessionFactory().isClosed())
 		//			log.info(">>>>VCT_DAO>> sessionFactory is closed!");
-		Session session = getSessionFactory().getCurrentSession();
+		DbSession session = getSessionFactory().getCurrentSession();
 		if (session == null) {
 			//			log.info(">>>>VCT_DAO>> Trying to close the existing session...");
 			Context.closeSession();
-			//			log.info(">>>>VCT_DAO>> Session closed.");
+			//			log.info(">>>>VCT_DAO>> DbSession closed.");
 			//			log.info(">>>>VCT_DAO>> Trying to open new session...");
 			Context.openSession();
-			//			log.info(">>>>VCT_DAO>> New Session created.");
+			//			log.info(">>>>VCT_DAO>> New DbSession created.");
 			try {
 				session = getSessionFactory().getCurrentSession();
 			}
 			catch (Exception e) {
-				log.error(">>>>>>>>VCT_DAO>> Session Error : " + session);
+				log.error(">>>>>>>>VCT_DAO>> DbSession Error : " + session);
 				e.printStackTrace();
 			}
 		}
