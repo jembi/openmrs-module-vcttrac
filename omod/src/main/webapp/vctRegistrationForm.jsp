@@ -1,6 +1,6 @@
 <%@ include file="template/localHeader.jsp"%>
 
-<openmrs:require privilege="Manage VCT/PIT Clients registration" otherwise="/login.htm" redirect="/module/@MODULE_ID@/vctHome.htm" />
+<openmrs:require privilege="Manage VCT/PIT Clients registration" otherwise="/login.htm" redirect="/module/vcttrac/vctHome.htm" />
 
 <script type="text/javascript">
 	var $j = jQuery.noConflict();
@@ -9,8 +9,8 @@
 <div style="width: 90%; margin-left: auto; margin-right: auto;">
 
 <h2>
-	<c:if test="${param.edit eq null}"><spring:message code="@MODULE_ID@.registration.title"/> : ${fn:toUpperCase(param.type)}</c:if>
-	<c:if test="${param.edit ne null}"><spring:message code="@MODULE_ID@.registration.vieweditregistration"/></c:if>
+	<c:if test="${param.edit eq null}"><spring:message code="vcttrac.registration.title"/> : ${fn:toUpperCase(param.type)}</c:if>
+	<c:if test="${param.edit ne null}"><spring:message code="vcttrac.registration.vieweditregistration"/></c:if>
 </h2>
 
 <!-- Open edit/view form in case the user want to do so -->
@@ -21,7 +21,7 @@
 <c:if test="${param.select=='new'}">
 	<form action="vctRegistration.form?save=true" method="post">
 		<div id="divNew">
-			<b class="boxHeader"><spring:message code="@MODULE_ID@.registration.clientName"/></b>
+			<b class="boxHeader"><spring:message code="vcttrac.registration.clientName"/></b>
 			<div class="box">
 				
 				<div id="errorDivNewId" style="margin-bottom: 5px;"></div>
@@ -35,40 +35,40 @@
 								<td></td>
 							</tr>
 							<tr>
-								<td><spring:message code="@MODULE_ID@.registration.nid"/></td>
-								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+								<td><spring:message code="vcttrac.registration.nid"/></td>
+								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 								<td><input readonly="readonly" type="text" name="nid" value="${nid}" size="40"/></td>
 								<td></td>
 							</tr>
 							<tr>
 								<td><spring:message code="PersonName.familyName"/></td>
-								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 								<td><input type="text" size="30" name="familyName" id="familyNameId" style="text-transform: uppercase;"/></td>
 								<td><span id="familyNameError"></span></td>
 							</tr>
 							<tr>
 								<td><spring:message code="PersonName.middleName"/></td>
-								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 								<td><input type="text" size="30" name="middleName"/></td>
 								<td></td>
 							</tr>
 							<tr>
 								<td><spring:message code="PersonName.givenName"/></td>
-								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 								<td><input type="text" size="30" name="givenName" id="givenNameId"/></td>
 								<td><span id="givenNameError"></span></td>
 							</tr>
 							<tr>
-								<td><spring:message code="@MODULE_ID@.person.gender"/></td>
-								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
-								<td><input type="radio" name="gender" id="gender-F" value="F"/><label for="gender-F"><spring:message code="@MODULE_ID@.person.female"/></label>
-									<input type="radio" name="gender" id="gender-M" value="M"/><label for="gender-M"><spring:message code="@MODULE_ID@.person.male"/></label>
+								<td><spring:message code="vcttrac.person.gender"/></td>
+								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
+								<td><input type="radio" name="gender" id="gender-F" value="F"/><label for="gender-F"><spring:message code="vcttrac.person.female"/></label>
+									<input type="radio" name="gender" id="gender-M" value="M"/><label for="gender-M"><spring:message code="vcttrac.person.male"/></label>
 								</td>
 								<td><span id="genderError"></span></td>
 							</tr>
 							<tr>
-								<td><spring:message code="@MODULE_ID@.person.birthdate"/></td>
-								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+								<td><spring:message code="vcttrac.person.birthdate"/></td>
+								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 								<td><input type="text" size="11" name="birthdate" id="birthdateId" onclick="showCalendar(this)"/></td>
 								<td><span id="birthdateError"></span></td>
 							</tr>
@@ -78,20 +78,20 @@
 					<div style="float: right; width: 45%;">
 						<table>
 							<tr>
-								<td><spring:message code="@MODULE_ID@.date"/></td>
-								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+								<td><spring:message code="vcttrac.date"/></td>
+								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 								<td><input type="text" size="11" name="registrationDate" id="registrationDateId" onclick="showCalendar(this)" value="${todayDate}"/></td>
 								<td><span id="registrationDateError"></span></td>
 							</tr>
 							<tr>
 								<td><spring:message code="Encounter.location"/></td>
-								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 								<td><openmrs_tag:locationField formFieldName="location" initialValue="${locationId}" /></td>
 								<td><span id="locationError"></span></td>
 							</tr>
 							<tr>
-								<td><spring:message code="@MODULE_ID@.registration.codeclient"/></td>
-								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+								<td><spring:message code="vcttrac.registration.codeclient"/></td>
+								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 								<td><input type="text" size="18" name="codeClient" id="codeClientId" autocomplete="off"/></td>
 								<td><span id="codeClientError"></span></td>
 							</tr>
@@ -101,7 +101,7 @@
 				</div>
 			</div><br/>
 			
-			<b class="boxHeader"><spring:message code="@MODULE_ID@.registration.clientInformation"/></b>
+			<b class="boxHeader"><spring:message code="vcttrac.registration.clientInformation"/></b>
 			<div class="box">
 				<div>
 					<div style="float: left; width: 45%;">
@@ -114,8 +114,8 @@
 					<div style="float: right; width: 45%;">
 						<table>
 							<tr>
-								<td><spring:message code="@MODULE_ID@.registration.CivilStatus"/></td>
-								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+								<td><spring:message code="vcttrac.registration.CivilStatus"/></td>
+								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 								<td><select name="civilStatus" id="civilStatusId"><option value="0">--</option>
 									<c:forEach items="${civilStatus}" var="cs">
 										<option value="${cs.key}">${cs.value}</option>
@@ -124,8 +124,8 @@
 								<td><span id="civilStatusError"></span></td>
 							</tr>
 							<tr>
-								<td><spring:message code="@MODULE_ID@.registration.educationLevel"/></td>
-								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+								<td><spring:message code="vcttrac.registration.educationLevel"/></td>
+								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 								<td><select name="educationLevel" id="educationLevelId"><option value="0">--</option>
 									<c:forEach items="${educationLevels}" var="el">
 										<option value="${el.key}">${el.value}</option>
@@ -134,8 +134,8 @@
 								<td><span id="educationLevelError"></span></td>
 							</tr>
 							<tr>
-								<td><spring:message code="@MODULE_ID@.registration.mainActivity"/></td>
-								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+								<td><spring:message code="vcttrac.registration.mainActivity"/></td>
+								<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 								<td><select name="mainActivity" id="mainActivityId"><option value="0">--</option>
 									<c:forEach items="${mainActivities}" var="ma">
 										<option value="${ma.key}">${ma.value}</option>
@@ -161,7 +161,7 @@
 	<form action="vctRegistration.form?save=true" method="post">
 		<div id="divChoose">
 		
-		<b class="boxHeader"><spring:message code="@MODULE_ID@.registration.title"/></b>
+		<b class="boxHeader"><spring:message code="vcttrac.registration.title"/></b>
 			<div class="box">
 			<div id="errorDivChooseId" style="margin-bottom: 5px;"></div>
 			<div id="noNIDError" style="margin-bottom: 5px;"></div>
@@ -174,7 +174,7 @@
 					</tr>
 					<tr>
 						<td>National ID</td>
-						<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+						<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 						<td>
 							<c:if test="${param.nid!=null}"><b style="font-size: 18px;">${param.nid}</b></c:if>
 							<c:if test="${param.nid==null}"><input autocomplete="off" type="text" name="input_nid" id="input_nid" size="40" /></c:if>
@@ -183,25 +183,25 @@
 					</tr>
 					<tr>
 						<td><spring:message code="Person.names"/></td>
-						<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+						<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 						<td><b>${vcttag:personName(param.clientId)}</b></td>
 						<td><input type="hidden" name="client" value="${param.clientId}"/></td>
 					</tr>
 					<tr>
 						<td><spring:message code="Encounter.location"/></td>
-						<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+						<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 						<td><openmrs_tag:locationField formFieldName="location_A" initialValue="${locationId}" /></td>
 						<td><span id="location_AError"></span></td>
 					</tr>
 					<tr>
-						<td><spring:message code="@MODULE_ID@.date"/></td>
-						<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+						<td><spring:message code="vcttrac.date"/></td>
+						<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 						<td><input type="text" id="registrationDate_AId" name="registrationDate_A" size="11" onclick="showCalendar(this)" value="${todayDate}"/></td>
 						<td><span id="registrationDate_AError"></span></td>
 					</tr>
 					<tr>
-						<td><spring:message code="@MODULE_ID@.registration.codeclient"/></td>
-						<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+						<td><spring:message code="vcttrac.registration.codeclient"/></td>
+						<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 						<td><input type="text" id="codeClient_AId" name="codeClient_A" size="18" autocomplete="off"/></td>
 						<td><span id="codeClient_AError"></span></td>
 					</tr>
@@ -227,14 +227,14 @@
 		
 		$j("#btSave").click(function(){
 			if(validateNewFormFields()){
-				if(confirm("<spring:message code='@MODULE_ID@.surewanttosave'/>"))
+				if(confirm("<spring:message code='vcttrac.surewanttosave'/>"))
 					this.form.submit();
 			}
 		});
 		
 		$j("#btSave2").click(function(){
 			if(validateExistingFormFields()){
-				if(confirm("<spring:message code='@MODULE_ID@.surewanttosave'/>"))
+				if(confirm("<spring:message code='vcttrac.surewanttosave'/>"))
 					this.form.submit();
 			}
 		});
@@ -336,7 +336,7 @@
 							} else {
 								$j("#noNIDError")
 										.html(
-												"<spring:message code='@MODULE_ID@.error.noNID'/>");
+												"<spring:message code='vcttrac.error.noNID'/>");
 								$j("#noNIDError").addClass(
 										"error");
 							}
@@ -402,7 +402,7 @@
 		}
 
 		if(!valid){
-			$j("#errorDivChooseId").html("<spring:message code='@MODULE_ID@.fillbeforesubmit'/>");
+			$j("#errorDivChooseId").html("<spring:message code='vcttrac.fillbeforesubmit'/>");
 			$j("#errorDivChooseId").addClass("error");
 		} else {
 			$j("#errorDivChooseId").html("");
@@ -478,7 +478,7 @@
 		}
 
 		if(!valid){
-			$j("#errorDivNewId").html("<spring:message code='@MODULE_ID@.fillbeforesubmit'/>");
+			$j("#errorDivNewId").html("<spring:message code='vcttrac.fillbeforesubmit'/>");
 			$j("#errorDivNewId").addClass("error");
 		} else {
 			$j("#errorDivNewId").html("");

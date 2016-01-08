@@ -2,10 +2,10 @@
 <module configVersion="1.2">
 
 	<!-- Base Module Properties -->
-	<id>@MODULE_ID@</id>
-	<name>@MODULE_NAME@</name>
-	<version>@MODULE_VERSION@</version>
-	<package>@MODULE_PACKAGE@</package>
+	<id>${project.parent.artifactId}</id>
+	<name>${project.parent.name}</name>
+	<version>${project.parent.version}</version>
+	<package>${project.parent.groupId}.${project.parent.artifactId}</package>
 	<author>Rwanda MoH</author>
 	<description>
 		VCT Module, management of clients in the process of counseling and testing HIV 
@@ -15,19 +15,19 @@
 		<require_module version="0.1.1">org.openmrs.module.mohtracportal</require_module>
 	</require_modules>
 
-	<activator>@MODULE_PACKAGE@.VCTModuleActivator</activator>
+	<activator>${project.parent.groupId}.${project.parent.artifactId}.VCTModuleActivator</activator>
 
 	<!--
-		<updateURL>https://dev.openmrs.org/modules/download/@MODULE_ID@/update.rdf</updateURL>
+		<updateURL>https://dev.openmrs.org/modules/download/${project.parent.artifactId}/update.rdf</updateURL>
 	-->
 	<!-- /Base Module Properties -->
 
-	<require_version>1.6.2.12911</require_version>
+	<require_version>1.9.9</require_version>
 
 	<!-- Extensions -->
 	<extension>
 		<point>org.openmrs.tracmodule.list</point>
-		<class>@MODULE_PACKAGE@.extension.html.AdminList</class>
+		<class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.AdminList</class>
 	</extension>
 
 	<privilege>
@@ -113,80 +113,80 @@
 
 	<!-- Required Global Properties -->
 		<globalProperty>
-			<property>@MODULE_ID@.configured</property>
+			<property>${project.parent.artifactId}.configured</property>
 			<defaultValue>false</defaultValue> 
 			<description> If this value is FALSE, that means the module has not been 
 				configured while it has, set to TRUE after the configuration.</description> 
 		</globalProperty>
 		
 		<globalProperty>
-			<property>@MODULE_ID@.relationshiptype.partners</property>
+			<property>${project.parent.artifactId}.relationshiptype.partners</property>
 			<defaultValue></defaultValue> 
 			<description> The person relation type for partners</description> 
 		</globalProperty>
 		
 		<globalProperty>
-			<property>@MODULE_ID@.vpc.vctPreferredIdentifier</property>
+			<property>${project.parent.artifactId}.vpc.vctPreferredIdentifier</property>
 			<defaultValue>4</defaultValue> 
 			<description>Preferred Patient Identifier in VCT Program (TracNet ID)</description> 
 		</globalProperty>
 		
 		<globalProperty>
-			<property>@MODULE_ID@.vpc.vctProgramConstruct</property>
+			<property>${project.parent.artifactId}.vpc.vctProgramConstruct</property>
 			<defaultValue></defaultValue> 
 			<description> VCT Program Construct concept id</description> 
 		</globalProperty>
 		
 		<globalProperty>
-			<property>@MODULE_ID@.vpc.whyDidYouGetTested</property>
+			<property>${project.parent.artifactId}.vpc.whyDidYouGetTested</property>
 			<defaultValue></defaultValue> 
 			<description> The concept id for "Why did you get tested for HIV"</description> 
 		</globalProperty>
 		
 		<globalProperty>
-			<property>@MODULE_ID@.vpc.programThatOrderedTest</property>
+			<property>${project.parent.artifactId}.vpc.programThatOrderedTest</property>
 			<defaultValue></defaultValue> 
 			<description> The concept id for "The program/department that ordered a test to be done"</description> 
 		</globalProperty>
 		
 		<globalProperty>
-			<property>@MODULE_ID@.vpc.hivTestingDone</property>
+			<property>${project.parent.artifactId}.vpc.hivTestingDone</property>
 			<defaultValue></defaultValue> 
 			<description> The concept id for "Has the patient been tested for HIV?"</description> 
 		</globalProperty>
 		
 		<globalProperty>
-			<property>@MODULE_ID@.vpc.numberOfCondomTaken</property>
+			<property>${project.parent.artifactId}.vpc.numberOfCondomTaken</property>
 			<defaultValue></defaultValue> 
 			<description> The concept id for "The number of condoms taken"</description> 
 		</globalProperty>
 		
 		<globalProperty>
-			<property>@MODULE_ID@.vpc.clinicalImpressionComment</property>
+			<property>${project.parent.artifactId}.vpc.clinicalImpressionComment</property>
 			<defaultValue></defaultValue> 
 			<description> The concept id for "Free text for non coded clinical impressions"</description> 
 		</globalProperty>
 		
 		<globalProperty>
-			<property>@MODULE_ID@.htc.hivTestConstruct</property>
+			<property>${project.parent.artifactId}.htc.hivTestConstruct</property>
 			<defaultValue></defaultValue> 
 			<description> HIV test construct concept id</description> 
 		</globalProperty>
 		
 		<globalProperty>
-			<property>@MODULE_ID@.htc.resultOfHivTest</property>
+			<property>${project.parent.artifactId}.htc.resultOfHivTest</property>
 			<defaultValue></defaultValue> 
 			<description> The concept id for "Result of PCR or rapid test"</description> 
 		</globalProperty>
 		
 		<globalProperty>
-			<property>@MODULE_ID@.htc.dateResultOfHivTestReceived</property>
+			<property>${project.parent.artifactId}.htc.dateResultOfHivTestReceived</property>
 			<defaultValue></defaultValue> 
 			<description> The concept id for "Question asking the date on which result of HIV test was received"</description> 
 		</globalProperty>
 		
 		<globalProperty>
-			<property>@MODULE_ID@.htc.hivTestDate</property>
+			<property>${project.parent.artifactId}.htc.hivTestDate</property>
 			<defaultValue></defaultValue> 
 			<description> The concept id for "DATE OF HIV TEST"</description> 
 		</globalProperty>
@@ -204,7 +204,7 @@
 	</dwr>
 
 	<!-- Internationalization -->
-	<!-- All message codes should start with @MODULE_ID@.* -->
+	<!-- All message codes should start with ${project.parent.artifactId}.* -->
 	<messages>
 		<lang>en</lang>
 		<file>messages.properties</file>

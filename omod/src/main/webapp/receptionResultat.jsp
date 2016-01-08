@@ -1,5 +1,5 @@
 <%@ include file="template/localHeader.jsp"%>
-<openmrs:require privilege="Manage Counseling of VCT/PIT Clients" otherwise="/login.htm" redirect="/module/@MODULE_ID@/vctResultReception.form" />
+<openmrs:require privilege="Manage Counseling of VCT/PIT Clients" otherwise="/login.htm" redirect="/module/vcttrac/vctResultReception.form" />
 
 <script type="text/javascript">
 var $ = jQuery.noConflict();
@@ -14,45 +14,45 @@ var $ = jQuery.noConflict();
 			display: none;
 		}
 	</style>
-<openmrs:htmlInclude file="/moduleResources/@MODULE_ID@/scripts/jquery.autocomplete.js" />
+<openmrs:htmlInclude file="/moduleResources/vcttrac/scripts/jquery.autocomplete.js" />
 
 <div style="width: 90%; margin-left: auto; margin-right: auto;">
 
-<h2><spring:message code="@MODULE_ID@.result.receptionofresult"/></h2>
+<h2><spring:message code="vcttrac.result.receptionofresult"/></h2>
 
 <div class="left">
-	<b class="boxHeader"><spring:message code="@MODULE_ID@.result.testcode"/></b>
+	<b class="boxHeader"><spring:message code="vcttrac.result.testcode"/></b>
 	<div class="box">
 		<c:forEach items="${clientCodes}" var="code" varStatus="status">
 			<span title="${code}" id="clientCode_${status.count}" onclick="changeValue(this);" class="clientCode highLight">${code}</span>
 		</c:forEach>
-		<c:if test="${empty clientCodes}"><i><spring:message code="@MODULE_ID@.result.noclientcodefound"/></i></c:if>
+		<c:if test="${empty clientCodes}"><i><spring:message code="vcttrac.result.noclientcodefound"/></i></c:if>
 	</div>
 </div>
 
 <div class="right">
-	<b class="boxHeader"><spring:message code="@MODULE_ID@.result.receptionofresult"/></b>
+	<b class="boxHeader"><spring:message code="vcttrac.result.receptionofresult"/></b>
 	<form class="box" action="vctResultReception.form?save" method="post">
 		<div id="errorDivId" style="margin-bottom: 5px;"></div>
 		<div id="result"></div>
 		<table>
 			<tr>
-				<td><spring:message code="@MODULE_ID@.result.clientcode"/></td>
-				<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+				<td><spring:message code="vcttrac.result.clientcode"/></td>
+				<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span>
 				</td>
 				<td><input readonly="readonly" type="text" id="clientCode" name="clientCode" /></td>
 				<td><span id="clientCodeError"></span></td>
 			</tr>
 			<tr>
-				<td><spring:message code="@MODULE_ID@.result.datetestresultreceived"/></td>
-				<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+				<td><spring:message code="vcttrac.result.datetestresultreceived"/></td>
+				<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span>
 				</td>
 				<td><input id="dateHivTestRsltRcvd" name="dateHivTestResultReceived" size="11" type="text" onclick="showCalendar(this)" value=""/></td>
 				<td><span id="dateHivTestRsltRcvdError"></span></td>
 			</tr>
 			<tr>
-				<td><spring:message code="@MODULE_ID@.counseling.numberOfCondoms"/></td>
-				<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span></td>
+				<td><spring:message code="vcttrac.counseling.numberOfCondoms"/></td>
+				<td><span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif" title="<spring:message code="vcttrac.help"/>"/></span></td>
 				<td><select name="numberOfCondom">
 						<option value="0">--</option>
 						<c:forEach items="4,8,12,16,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,100" var="nbr">
@@ -79,7 +79,7 @@ var $ = jQuery.noConflict();
 			$("#clientCode").autocomplete("autocompletion/getClientCodeForResult.htm");
 			$("#btSave").click(function(){
 				if(validateFields()){
-					if(confirm("<spring:message code='@MODULE_ID@.surewanttosave'/>"))
+					if(confirm("<spring:message code='vcttrac.surewanttosave'/>"))
 						this.form.submit();
 				}
 			});
@@ -190,7 +190,7 @@ var $ = jQuery.noConflict();
 			}*/
 
 			if(!valid){
-				$("#errorDivId").html("<spring:message code='@MODULE_ID@.fillbeforesubmit'/>");
+				$("#errorDivId").html("<spring:message code='vcttrac.fillbeforesubmit'/>");
 				$("#errorDivId").addClass("error");
 			} else {
 				$("#errorDivId").html("");

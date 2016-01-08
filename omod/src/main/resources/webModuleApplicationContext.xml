@@ -16,28 +16,28 @@
     </property>
     	<property name="mappings">
             <props>	          
-               <prop key="module/@MODULE_ID@/vctHome.htm">homeController</prop>
-               <prop key="module/@MODULE_ID@/vctClientDashboard.form">clientDashboardController</prop>
-	           <prop key="module/@MODULE_ID@/preCounseling.form">vctPreCounselingFormController</prop>
-	           <prop key="module/@MODULE_ID@/counseling.form">vctCounselingFormController</prop>
-	           <prop key="module/@MODULE_ID@/saveCounseling.htm">vctSaveCounselingViewController</prop>
-	           <prop key="module/@MODULE_ID@/vctRegistration.form">startCounselingController</prop>
-	           <prop key="module/@MODULE_ID@/getClientCode.htm">myController</prop>
-	           <prop key="module/@MODULE_ID@/getClientInfo.htm">clientInfoController</prop>
-	           <prop key="module/@MODULE_ID@/getClientCodeForResult.htm">autoCompleteForResultController</prop>
-	           <prop key="module/@MODULE_ID@/vctClientResults.form">resultController</prop>
-	           <prop key="module/@MODULE_ID@/vctResultReception.form">receptionOfResultController</prop>
-			   <prop key="module/@MODULE_ID@/vctStatistics.htm">vctStatisticsController</prop>			   
-               <prop key="module/@MODULE_ID@/vctConfigurations.htm">configurationController</prop>
-			   <prop key="module/@MODULE_ID@/chart.htm">vctChartController</prop>
-               <prop key="module/@MODULE_ID@/vctClientSearch.htm">vctClientSearchController</prop>
-               <prop key="module/@MODULE_ID@/vctClientTest.list">clientTestFormController</prop>
-               <prop key="module/@MODULE_ID@/hivProgramEnrollment.list">vctProgramEnrollmentController</prop>
-               <prop key="module/@MODULE_ID@/vctOverview.htm">vctOverviewController</prop>
-               <prop key="module/@MODULE_ID@/vctTracnetIndecators.list">vctTracnetIndicatorsController</prop>
-               <prop key="module/@MODULE_ID@/vctClients.list">vctClientsListingController</prop>
-               <prop key="module/@MODULE_ID@/vctPreRegistrationCheckup.htm">vctPreRegistrationController</prop>
-               <prop key="module/@MODULE_ID@/vctTodayGraphicalStatistic.htm">vctGraphicalStatisticPerDayController</prop>
+               <prop key="module/vcttrac/vctHome.htm">homeController</prop>
+               <prop key="module/vcttrac/vctClientDashboard.form">clientDashboardController</prop>
+	           <prop key="module/vcttrac/preCounseling.form">vctPreCounselingFormController</prop>
+	           <prop key="module/vcttrac/counseling.form">vctCounselingFormController</prop>
+	           <prop key="module/vcttrac/saveCounseling.htm">vctSaveCounselingViewController</prop>
+	           <prop key="module/vcttrac/vctRegistration.form">startCounselingController</prop>
+	           <prop key="module/vcttrac/getClientCode.htm">myController</prop>
+	           <prop key="module/vcttrac/getClientInfo.htm">clientInfoController</prop>
+	           <prop key="module/vcttrac/getClientCodeForResult.htm">autoCompleteForResultController</prop>
+	           <prop key="module/vcttrac/vctClientResults.form">resultController</prop>
+	           <prop key="module/vcttrac/vctResultReception.form">receptionOfResultController</prop>
+			   <prop key="module/vcttrac/vctStatistics.htm">vctStatisticsController</prop>			   
+               <prop key="module/vcttrac/vctConfigurations.htm">configurationController</prop>
+			   <prop key="module/vcttrac/chart.htm">vctChartController</prop>
+               <prop key="module/vcttrac/vctClientSearch.htm">vctClientSearchController</prop>
+               <prop key="module/vcttrac/vctClientTest.list">clientTestFormController</prop>
+               <prop key="module/vcttrac/hivProgramEnrollment.list">vctProgramEnrollmentController</prop>
+               <prop key="module/vcttrac/vctOverview.htm">vctOverviewController</prop>
+               <prop key="module/vcttrac/vctTracnetIndecators.list">vctTracnetIndicatorsController</prop>
+               <prop key="module/vcttrac/vctClients.list">vctClientsListingController</prop>
+               <prop key="module/vcttrac/vctPreRegistrationCheckup.htm">vctPreRegistrationController</prop>
+               <prop key="module/vcttrac/vctTodayGraphicalStatistic.htm">vctGraphicalStatisticPerDayController</prop>
 	        </props>
 		</property>
     </bean>
@@ -60,73 +60,73 @@
 	
     <!-- Controllers -->
     <bean id="vctGraphicalStatisticPerDayController" class="@MODULE_PACKAGE@.web.controller.VCTGraphicalStatisticPerDayController">
-    	<property name="viewName"><value>/module/@MODULE_ID@/graphicStatisticPerDay</value></property>
+    	<property name="viewName"><value>/module/vcttrac/graphicStatisticPerDay</value></property>
     </bean>
     
     <bean id="vctProgramEnrollmentController" class="@MODULE_PACKAGE@.web.controller.VCTProgramEnrollmentController">
-    	<property name="viewName"><value>/module/@MODULE_ID@/vctEnrollment</value></property>
+    	<property name="viewName"><value>/module/vcttrac/vctEnrollment</value></property>
     </bean>
     
     <bean id="vctPreRegistrationController" class="@MODULE_PACKAGE@.web.controller.VCTPreRegistrationCheckupController">
-    	<property name="viewName"><value>/module/@MODULE_ID@/vctPreRegistrationCheckup</value></property>
+    	<property name="viewName"><value>/module/vcttrac/vctPreRegistrationCheckup</value></property>
     </bean>
     
     <bean id="vctClientsListingController" class="@MODULE_PACKAGE@.web.controller.VCTClientListingController">
-    	<property name="viewName"><value>/module/@MODULE_ID@/vctClientListing</value></property>
+    	<property name="viewName"><value>/module/vcttrac/vctClientListing</value></property>
     </bean>
     
     <bean id="vctTracnetIndicatorsController" class="@MODULE_PACKAGE@.web.controller.VCTTracnetIndicatorsController">
-    	<property name="viewName"><value>/module/@MODULE_ID@/vctTracnetIndicators</value></property>
+    	<property name="viewName"><value>/module/vcttrac/vctTracnetIndicators</value></property>
     </bean>
     
     <bean id="vctOverviewController" class="@MODULE_PACKAGE@.web.controller.VCTOverviewController">
-    	<property name="viewName"><value>/module/@MODULE_ID@/vctOverview</value></property>
+    	<property name="viewName"><value>/module/vcttrac/vctOverview</value></property>
     </bean>
     
     <bean id="clientTestFormController" class="@MODULE_PACKAGE@.web.controller.VCTClientViewController">
-    	<property name="viewName"><value>/module/@MODULE_ID@/vctClientInfoFrm</value></property>
+    	<property name="viewName"><value>/module/vcttrac/vctClientInfoFrm</value></property>
     </bean>
     
     <bean id="vctClientSearchController" class="@MODULE_PACKAGE@.web.controller.VCTClientSearchController">
-		<property name="viewName"><value>/module/@MODULE_ID@/vctClientSearchForm</value></property>
+		<property name="viewName"><value>/module/vcttrac/vctClientSearchForm</value></property>
     </bean>
     
     <bean id="homeController" class="@MODULE_PACKAGE@.web.controller.VCTHomePageController">
-		<property name="viewName"><value>/module/@MODULE_ID@/vctHomePage</value></property>
+		<property name="viewName"><value>/module/vcttrac/vctHomePage</value></property>
     </bean>
     
     <bean id="configurationController" class="@MODULE_PACKAGE@.web.controller.VCTConfigurationsController">
-		<property name="viewName"><value>/module/@MODULE_ID@/vctConfiguration</value></property>
+		<property name="viewName"><value>/module/vcttrac/vctConfiguration</value></property>
     </bean>
     
     <bean id="vctStatisticsController" class="@MODULE_PACKAGE@.web.controller.VCTStatisticsController">
-		<property name="viewName"><value>/module/@MODULE_ID@/vctStatisticsForm</value></property>
+		<property name="viewName"><value>/module/vcttrac/vctStatisticsForm</value></property>
     </bean>
     
     <bean id="clientDashboardController" class="@MODULE_PACKAGE@.web.controller.VCTClientDashboardFormController">
-		<property name="viewName"><value>/module/@MODULE_ID@/vctClientDashboardForm</value></property>
+		<property name="viewName"><value>/module/vcttrac/vctClientDashboardForm</value></property>
     </bean>
     
     <bean id="clientInfoController" class="@MODULE_PACKAGE@.web.controller.AutoCompleteClientInfoController">
-		<property name="viewName"><value>/module/@MODULE_ID@/getClientInfo</value></property>
+		<property name="viewName"><value>/module/vcttrac/getClientInfo</value></property>
     </bean>
     
     <bean id="myController" class="@MODULE_PACKAGE@.web.controller.MyController">
-		<property name="viewName"><value>/module/@MODULE_ID@/getClientCode</value></property>
+		<property name="viewName"><value>/module/vcttrac/getClientCode</value></property>
     </bean>
     
     <bean id="autoCompleteForResultController" class="@MODULE_PACKAGE@.web.controller.AutoCompleteCodeForReceptionController">
-		<property name="viewName"><value>/module/@MODULE_ID@/autoCompleteClientCodeForResult</value></property>
+		<property name="viewName"><value>/module/vcttrac/autoCompleteClientCodeForResult</value></property>
     </bean>
     
     <bean id="receptionOfResultController" class="@MODULE_PACKAGE@.web.controller.VCTReceptionOfResultController">
-		<property name="viewName"><value>/module/@MODULE_ID@/receptionResultat</value></property>
+		<property name="viewName"><value>/module/vcttrac/receptionResultat</value></property>
     </bean>
     
     <bean id="resultController" class="@MODULE_PACKAGE@.web.controller.VCTAutoCompleteListController">
-		<!-- <property name="viewName"><value>/module/@MODULE_ID@/clientHivResultForm</value></property> -->
-		<property name="formView"><value>/module/@MODULE_ID@/clientHivResultForm</value></property>
-		<property name="successView"><value>/module/@MODULE_ID@/vctClientResults.form</value></property>
+		<!-- <property name="viewName"><value>/module/vcttrac/clientHivResultForm</value></property> -->
+		<property name="formView"><value>/module/vcttrac/clientHivResultForm</value></property>
+		<property name="successView"><value>/module/vcttrac/vctClientResults.form</value></property>
 		<property name="commandName"><value>result</value></property>
 		<property name="commandClass" value="@MODULE_PACKAGE@.VCTClientResult"></property>
 		<property name="validator">
@@ -135,19 +135,19 @@
     </bean>
     
     <bean id="startCounselingController" class="@MODULE_PACKAGE@.web.controller.VCTRegistrationFormController">
-		<property name="viewName"><value>/module/@MODULE_ID@/vctRegistrationForm</value></property>
+		<property name="viewName"><value>/module/vcttrac/vctRegistrationForm</value></property>
     </bean>
     
     <bean id="vctPreCounselingFormController" class="@MODULE_PACKAGE@.web.controller.VCTPreCounselingFormController">
-		<property name="viewName"><value>/module/@MODULE_ID@/vctPreCounseling</value></property>
+		<property name="viewName"><value>/module/vcttrac/vctPreCounseling</value></property>
     </bean>
     
     <bean id="vctCounselingFormController" class="@MODULE_PACKAGE@.web.controller.VCTCounselingFormController">
-		<property name="viewName"><value>/module/@MODULE_ID@/vctCounselingForm</value></property>
+		<property name="viewName"><value>/module/vcttrac/vctCounselingForm</value></property>
     </bean>
     
     <bean id="vctSaveCounselingViewController" class="@MODULE_PACKAGE@.web.controller.VCTSaveCounselingViewController">
-		<property name="viewName"><value>/module/@MODULE_ID@/vctSaveCounselingView</value></property>
+		<property name="viewName"><value>/module/vcttrac/vctSaveCounselingView</value></property>
     </bean>
     
     <!-- /Controllers -->

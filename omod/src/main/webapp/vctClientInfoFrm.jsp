@@ -1,26 +1,26 @@
 <%@ include file="template/localHeader.jsp"%>
-<openmrs:htmlInclude file="/moduleResources/@MODULE_ID@/scripts/jquery.bgiframe.js" />
+<openmrs:htmlInclude file="/moduleResources/vcttrac/scripts/jquery.bgiframe.js" />
 <!-- 
-<openmrs:htmlInclude file="/moduleResources/@MODULE_ID@/scripts/ui/ui.core.js" />
-<openmrs:htmlInclude file="/moduleResources/@MODULE_ID@/scripts/ui/ui.dialog.js" />
-<openmrs:htmlInclude file="/moduleResources/@MODULE_ID@/scripts/ui/ui.draggable.js" />
-<openmrs:htmlInclude file="/moduleResources/@MODULE_ID@/scripts/ui/ui.resizable.js" />
+<openmrs:htmlInclude file="/moduleResources/vcttrac/scripts/ui/ui.core.js" />
+<openmrs:htmlInclude file="/moduleResources/vcttrac/scripts/ui/ui.dialog.js" />
+<openmrs:htmlInclude file="/moduleResources/vcttrac/scripts/ui/ui.draggable.js" />
+<openmrs:htmlInclude file="/moduleResources/vcttrac/scripts/ui/ui.resizable.js" />
 
-<openmrs:htmlInclude file="/moduleResources/@MODULE_ID@/theme/ui.all.css" />
+<openmrs:htmlInclude file="/moduleResources/vcttrac/theme/ui.all.css" />
  -->
-<openmrs:require privilege="Edit VCT Client test result" otherwise="/login.htm" redirect="/module/@MODULE_ID@/vctClientTest.list?page=1" />
+<openmrs:require privilege="Edit VCT Client test result" otherwise="/login.htm" redirect="/module/vcttrac/vctClientTest.list?page=1" />
 
 <script type="text/javascript">
 var $j = jQuery.noConflict();
 </script>
 
 <!-- <div style="width: 22%; float: left; border: 1px solid #8FABC7; -moz-border-radius: 3px; padding: 5px; font-size: 0.9em;">
-<div style="width: 100%; background: #8FABC7; -moz-border-radius: 3px; padding: 4px; margin-bottom: 3px; color: #FFFFFF; font-weight: bold;"><spring:message code="@MODULE_ID@.tablelist.newClientTest"/></div>
+<div style="width: 100%; background: #8FABC7; -moz-border-radius: 3px; padding: 4px; margin-bottom: 3px; color: #FFFFFF; font-weight: bold;"><spring:message code="vcttrac.tablelist.newClientTest"/></div>
 	<form action="vctClientTest.list?page=1&save" method="post">
 		<table>
 			<tr><td></td><td><input type="hidden" id="clientId" name="clientId" value=""/></td><td></td></tr>
-			<tr><td><spring:message code="@MODULE_ID@.registration.codeclient"/></td><td><input readonly="readonly" type="text" name="clientCode" id="clientCodeId" value=""/></td><td><span id="clientCodeError"></span></td></tr>
-			<tr><td><spring:message code="@MODULE_ID@.result.clientcode"/></td><td><input type="text" name="testCode" id="testCodeId" value=""/></td><td><span id="testCodeError"></span></td></tr>
+			<tr><td><spring:message code="vcttrac.registration.codeclient"/></td><td><input readonly="readonly" type="text" name="clientCode" id="clientCodeId" value=""/></td><td><span id="clientCodeError"></span></td></tr>
+			<tr><td><spring:message code="vcttrac.result.clientcode"/></td><td><input type="text" name="testCode" id="testCodeId" value=""/></td><td><span id="testCodeError"></span></td></tr>
 			<tr><td><spring:message code="Encounter.datetime"/></td><td><input type="text" name="obsDate" id="obsDateId" value="" size="11" onclick="showCalendar(this);"/></td><td><span id="obsDateError"></span></td></tr>
 			<tr><td></td><td><input type="button" id="btSave" value="<spring:message code="general.save"/>"/></td></tr>
 		</table>
@@ -44,14 +44,14 @@ var $j = jQuery.noConflict();
 
 	<table id="list_data">
 		<tr>
-			<th class="columnHeader"><spring:message code="@MODULE_ID@.export.column.registrationdate"/></th>
-			<th class="columnHeader"><spring:message code="@MODULE_ID@.export.column.number"/></th>
-			<th class="columnHeader"><spring:message code="@MODULE_ID@.export.column.clientcode"/></th>
-			<th class="columnHeader"><spring:message code="@MODULE_ID@.result.testcode"/></th>
-			<th class="columnHeader"><spring:message code="@MODULE_ID@.export.column.gender"/></th>
-			<th class="columnHeader"><spring:message code="@MODULE_ID@.age"/></th>
+			<th class="columnHeader"><spring:message code="vcttrac.export.column.registrationdate"/></th>
+			<th class="columnHeader"><spring:message code="vcttrac.export.column.number"/></th>
+			<th class="columnHeader"><spring:message code="vcttrac.export.column.clientcode"/></th>
+			<th class="columnHeader"><spring:message code="vcttrac.result.testcode"/></th>
+			<th class="columnHeader"><spring:message code="vcttrac.export.column.gender"/></th>
+			<th class="columnHeader"><spring:message code="vcttrac.age"/></th>
 			<openmrs:hasPrivilege privilege="View VCT Client result">
-				<th class="columnHeader"><spring:message code="@MODULE_ID@.result.resulthivtest"/></th>
+				<th class="columnHeader"><spring:message code="vcttrac.result.resulthivtest"/></th>
 				<th class="columnHeader"></th>
 			</openmrs:hasPrivilege>
 			<!-- <th class="columnHeader"></th> -->
@@ -75,17 +75,17 @@ var $j = jQuery.noConflict();
 				</c:choose>
 				<td class="rowValue ${status.count%2!=0?'even':''}">${((param.page-1)*pageSize)+status.count}.</td>
 				<td class="rowValue ${status.count%2!=0?'even':''}">${client.codeClient}</td>
-				<td class="rowValue ${status.count%2!=0?'even':''}"><c:if test="${client.codeTest ne null}"><img title="<spring:message code="@MODULE_ID@.result.clientcode.edit.title"/>" border="0" src="<openmrs:contextPath/>/images/edit.gif" onclick="editCodeTest(${client.tracVctClientId},'${client.codeTest}');"/>&nbsp;${client.codeTest}</c:if><c:if test="${client.codeTest==null}"><span class="lastObsValue">-</span></c:if></td>
+				<td class="rowValue ${status.count%2!=0?'even':''}"><c:if test="${client.codeTest ne null}"><img title="<spring:message code="vcttrac.result.clientcode.edit.title"/>" border="0" src="<openmrs:contextPath/>/images/edit.gif" onclick="editCodeTest(${client.tracVctClientId},'${client.codeTest}');"/>&nbsp;${client.codeTest}</c:if><c:if test="${client.codeTest==null}"><span class="lastObsValue">-</span></c:if></td>
 				<td class="rowValue ${status.count%2!=0?'even':''}"><img border="0"
 					src="<c:if test="${client.client.gender=='F'}"><openmrs:contextPath/>/images/female.gif</c:if><c:if test="${client.client.gender=='M'}"><openmrs:contextPath/>/images/male.gif</c:if>" /></td>
-				<td class="rowValue ${status.count%2!=0?'even':''}">${(client.client.age<1)?'<1':client.client.age} <spring:message code="@MODULE_ID@.dashboard.yrs"/></td>
+				<td class="rowValue ${status.count%2!=0?'even':''}">${(client.client.age<1)?'<1':client.client.age} <spring:message code="vcttrac.dashboard.yrs"/></td>
 				<openmrs:hasPrivilege privilege="View VCT Client result">
 					<td class="rowValue ${status.count%2!=0?'even':''}">
 						<span class="${vcttag:convsetObsValueByConcept(client.resultObs, resultOfHivTest)==positiveString?'lastObsValuePositive':'lastObsValue'}">${vcttag:convsetObsValueByConcept(client.resultObs, resultOfHivTest)}</span>
-						<c:if test="${client.resultObs ne null}">&nbsp;<spring:message code="@MODULE_ID@.date.on"/>&nbsp;<openmrs:formatDate date="${client.resultObs.obsDatetime}" type="medium" /></c:if>
+						<c:if test="${client.resultObs ne null}">&nbsp;<spring:message code="vcttrac.date.on"/>&nbsp;<openmrs:formatDate date="${client.resultObs.obsDatetime}" type="medium" /></c:if>
 					</td>
-					<td class="rowValue ${status.count%2!=0?'even':''}"><c:if test="${client.codeTest==null}"><input type="button" onclick="addCodeTest(${client.tracVctClientId},'${client.codeClient}', '<openmrs:formatDate date='${client.dateOfRegistration}' type='textbox'/>');" value="<spring:message code="@MODULE_ID@.test.add"/>"/></c:if>
-						<c:if test="${client.codeTest ne null && vcttag:convsetObsValueByConcept(client.resultObs, resultOfHivTest)=='-'}"><a href="vctClientResults.form?tcode=${client.codeTest}"><spring:message code="@MODULE_ID@.result.add"/></a></c:if>
+					<td class="rowValue ${status.count%2!=0?'even':''}"><c:if test="${client.codeTest==null}"><input type="button" onclick="addCodeTest(${client.tracVctClientId},'${client.codeClient}', '<openmrs:formatDate date='${client.dateOfRegistration}' type='textbox'/>');" value="<spring:message code="vcttrac.test.add"/>"/></c:if>
+						<c:if test="${client.codeTest ne null && vcttag:convsetObsValueByConcept(client.resultObs, resultOfHivTest)=='-'}"><a href="vctClientResults.form?tcode=${client.codeTest}"><spring:message code="vcttrac.result.add"/></a></c:if>
 					</td>
 				</openmrs:hasPrivilege>
 			</tr>
@@ -98,10 +98,10 @@ var $j = jQuery.noConflict();
 				<tr>
 					<c:if test="${prevPage!=-1}">
 						<td width="100px" class="" style="padding:1px 2px 1px 2px; vertical-align: text-top;">
-							<a href="vctClientTest.list?page=1"><div class="list_pageNumber" style="text-align: center;">|&lt; <spring:message code="@MODULE_ID@.navigation.first"/></div></a>
+							<a href="vctClientTest.list?page=1"><div class="list_pageNumber" style="text-align: center;">|&lt; <spring:message code="vcttrac.navigation.first"/></div></a>
 						</td>
 						<td width="100px" class="" style="padding:1px 2px 1px 2px; vertical-align: text-top;"><a href="vctClientTest.list?page=${prevPage}">
-							<div class="list_pageNumber" style="text-align: center;">&lt;&lt; <spring:message code="@MODULE_ID@.navigation.previous"/></div></a>
+							<div class="list_pageNumber" style="text-align: center;">&lt;&lt; <spring:message code="vcttrac.navigation.previous"/></div></a>
 						</td>
 					</c:if>
 					<td>
@@ -109,10 +109,10 @@ var $j = jQuery.noConflict();
 					</td>
 					<c:if test="${nextPage!=-1}">
 						<td width="100px" class="" style="padding:1px 2px 1px 2px; vertical-align: text-top;">
-							<a href="vctClientTest.list?page=${nextPage}"><div class="list_pageNumber" style="text-align: center;"><spring:message code="@MODULE_ID@.navigation.next"/> &gt;&gt;</div></a>
+							<a href="vctClientTest.list?page=${nextPage}"><div class="list_pageNumber" style="text-align: center;"><spring:message code="vcttrac.navigation.next"/> &gt;&gt;</div></a>
 						</td>
 						<td width="100px" class="" style="padding:1px 2px 1px 2px; vertical-align: text-top;">
-							<a href="vctClientTest.list?page=${lastPage}"><div class="list_pageNumber" style="text-align: center;"><spring:message code="@MODULE_ID@.navigation.last"/> &gt;|</div></a>
+							<a href="vctClientTest.list?page=${lastPage}"><div class="list_pageNumber" style="text-align: center;"><spring:message code="vcttrac.navigation.last"/> &gt;|</div></a>
 						</td>
 					</c:if>
 				</tr>
@@ -132,14 +132,14 @@ var $j = jQuery.noConflict();
 
 	function submitForm(){
 		if(validateFormFields()){
-			if(confirm("<spring:message code='@MODULE_ID@.surewanttosave'/>"))
+			if(confirm("<spring:message code='vcttrac.surewanttosave'/>"))
 				document.getElementById("formNewTest").submit();
 		}
 	}
 
 	function submitFormEditClientTestCode(){
 		if(validateEditFormFields()){
-			if(confirm("<spring:message code='@MODULE_ID@.surewanttosave'/>"))
+			if(confirm("<spring:message code='vcttrac.surewanttosave'/>"))
 				document.getElementById("formEditTestCode").submit();
 		}
 	}
@@ -155,18 +155,18 @@ var $j = jQuery.noConflict();
 	}
 
 	function initDialogContent(id,codeClient,dateOfRegistration){
-		$j("#divDlg").html("<div id='dialog' style='font-size: 0.9em;' title='<spring:message code='@MODULE_ID@.tablelist.newClientTest'/>'><p><div><div id='errorDivId' style='margin-bottom: 5px;'></div><form id='formNewTest' action='vctClientTest.list?page=1&save' method='post'>"
+		$j("#divDlg").html("<div id='dialog' style='font-size: 0.9em;' title='<spring:message code='vcttrac.tablelist.newClientTest'/>'><p><div><div id='errorDivId' style='margin-bottom: 5px;'></div><form id='formNewTest' action='vctClientTest.list?page=1&save' method='post'>"
 			+"<table><tr><td></td><td></td><td><input type='hidden' id='clientId' name='clientId' value='"+id+"'/></td><td></td></tr>"
-			+"<tr><td><spring:message code='@MODULE_ID@.registration.codeclient'/></td><td><span class='displayHelp'><img border='0' src='<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif' title='<spring:message code='@MODULE_ID@.help'/>'/></span></td><td><input readonly='readonly' type='text' name='clientCode' id='clientCodeId' value='"+codeClient+"'/></td><td><span id='clientCodeError'></span></td></tr>"
-			+"<tr><td><spring:message code='@MODULE_ID@.result.clientcode'/></td><td><span class='displayHelp'><img border='0' src='<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif' title='<spring:message code='@MODULE_ID@.help'/>'/></span></td><td><input type='text' name='testCode' id='testCodeId' value='"+codeClient+"'/></td><td><span id='testCodeError'></span></td></tr>"
-			+"<tr><td><spring:message code='Encounter.datetime'/></td><td><span class='displayHelp'><img border='0' src='<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif' title='<spring:message code='@MODULE_ID@.help'/>'/></span></td><td><input type='text' name='obsDate' id='obsDateId' value='"+dateOfRegistration+"' size='11' onclick='showCalendar(this);'/></td><td><span id='obsDateError'></span></td></tr>"
+			+"<tr><td><spring:message code='vcttrac.registration.codeclient'/></td><td><span class='displayHelp'><img border='0' src='<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif' title='<spring:message code='vcttrac.help'/>'/></span></td><td><input readonly='readonly' type='text' name='clientCode' id='clientCodeId' value='"+codeClient+"'/></td><td><span id='clientCodeError'></span></td></tr>"
+			+"<tr><td><spring:message code='vcttrac.result.clientcode'/></td><td><span class='displayHelp'><img border='0' src='<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif' title='<spring:message code='vcttrac.help'/>'/></span></td><td><input type='text' name='testCode' id='testCodeId' value='"+codeClient+"'/></td><td><span id='testCodeError'></span></td></tr>"
+			+"<tr><td><spring:message code='Encounter.datetime'/></td><td><span class='displayHelp'><img border='0' src='<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif' title='<spring:message code='vcttrac.help'/>'/></span></td><td><input type='text' name='obsDate' id='obsDateId' value='"+dateOfRegistration+"' size='11' onclick='showCalendar(this);'/></td><td><span id='obsDateError'></span></td></tr>"
 			+"<tr><td></td><td></td><td><input type='button' id='btSave' value='<spring:message code='general.save' />' onclick='submitForm();'/></td></tr></table></form></div></p></div>");
 	}
 
 	function editClientCodeTest(id,clientTestCode){
-		$j("#divDlg").html("<div id='dialog' style='font-size: 0.9em;' title='<spring:message code='@MODULE_ID@.tablelist.editClientTest'/>'><p><div><div id='errorDivId' style='margin-bottom: 5px;'></div><form id='formEditTestCode' action='vctClientTest.list?page=1&edit' method='post'>"
+		$j("#divDlg").html("<div id='dialog' style='font-size: 0.9em;' title='<spring:message code='vcttrac.tablelist.editClientTest'/>'><p><div><div id='errorDivId' style='margin-bottom: 5px;'></div><form id='formEditTestCode' action='vctClientTest.list?page=1&edit' method='post'>"
 			+"<table><tr><td></td><td></td><td><input type='hidden' id='clientCodeId' name='clientCode' value='"+id+"'/></td><td></td></tr>"
-			+"<tr><td><spring:message code='@MODULE_ID@.result.clientcode'/></td><td><span class='displayHelp'><img border='0' src='<openmrs:contextPath/>/moduleResources/@MODULE_ID@/images/help.gif' title='<spring:message code='@MODULE_ID@.help'/>'/></span></td><td><input type='text' name='testCode' id='testCodeId' value='"+clientTestCode+"'/></td><td><span id='testCodeError'></span></td></tr>"
+			+"<tr><td><spring:message code='vcttrac.result.clientcode'/></td><td><span class='displayHelp'><img border='0' src='<openmrs:contextPath/>/moduleResources/vcttrac/images/help.gif' title='<spring:message code='vcttrac.help'/>'/></span></td><td><input type='text' name='testCode' id='testCodeId' value='"+clientTestCode+"'/></td><td><span id='testCodeError'></span></td></tr>"
 			+"<tr><td></td><td></td><td><input type='button' id='btSave' value='<spring:message code='general.save' />' onclick='submitFormEditClientTestCode();'/></td></tr></table></form></div></p></div>");
 	}
 
@@ -212,7 +212,7 @@ var $j = jQuery.noConflict();
 		}
 
 		if(!valid){
-			$j("#errorDivId").html("<spring:message code='@MODULE_ID@.fillbeforesubmit'/>");
+			$j("#errorDivId").html("<spring:message code='vcttrac.fillbeforesubmit'/>");
 			$j("#errorDivId").addClass("error");
 		} else {
 			$j("#errorDivId").html("");
@@ -234,7 +234,7 @@ var $j = jQuery.noConflict();
 		}
 
 		if(!valid){
-			$j("#errorDivId").html("<spring:message code='@MODULE_ID@.fillbeforesubmit'/>");
+			$j("#errorDivId").html("<spring:message code='vcttrac.fillbeforesubmit'/>");
 			$j("#errorDivId").addClass("error");
 		} else {
 			$j("#errorDivId").html("");

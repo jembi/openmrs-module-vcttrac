@@ -1,6 +1,6 @@
 <%@ include file="/WEB-INF/template/include.jsp"%>
 
-<br/><span style="font-size: 2.2em; font-weight: bold; text-decoration: underline;"><spring:message code="@MODULE_ID@.graph.statistic.perday"/></span>
+<br/><span style="font-size: 2.2em; font-weight: bold; text-decoration: underline;"><spring:message code="vcttrac.graph.statistic.perday"/></span>
 
 <table width="96%" cellspacing="25">
 	<!-- <tr>
@@ -11,7 +11,7 @@
 					<tr>
 						<td>Day</td>
 						<td>><input name="todayDate" type="text" size="11" onclick="showCalendar(this)" value="${todayDate}" /></td>
-						<td><input name="refresh" type="button" value="<spring:message code='@MODULE_ID@.tablelist.refresh'/>" /></td>
+						<td><input name="refresh" type="button" value="<spring:message code='vcttrac.tablelist.refresh'/>" /></td>
 					</tr>
 				</table>
 			</span>
